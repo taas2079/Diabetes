@@ -31,24 +31,24 @@
             margin: 10px 5px 10px 0; 
             padding: 8px 15px;
             font-size: 16px;
-            flex-grow: 1; /* لجعل الأزرار تتوزع بشكل متساو */
+            flex-grow: 1; 
         }
         #clear-records-btn {
-            background-color: #dc3545; /* أحمر */
+            background-color: #dc3545; 
         }
         #clear-records-btn:hover { background-color: #c82333; }
         #print-records-btn {
-            background-color: #007bff; /* أزرق */
+            background-color: #007bff; 
         }
         #print-records-btn:hover { background-color: #0056b3; }
         
-        /* 🛑 قسم الاستيراد المصغر */
+        /* قسم الاستيراد */
         .import-section {
             width: 100%; 
             background-color: #fff3cd; 
             border: 1px solid #ffeeba; 
             border-radius: 8px;
-            padding: 10px 15px; /* تصغير الهامش الداخلي */
+            padding: 10px 15px; 
             margin-bottom: 20px; 
             text-align: center;
             display: flex;
@@ -60,7 +60,7 @@
             font-size: 18px;
             margin: 0;
             padding: 0;
-            flex-basis: 100%; /* العنوان يأخذ عرض كامل */
+            flex-basis: 100%; 
             margin-bottom: 5px;
         }
         .import-section input[type="file"] {
@@ -74,11 +74,10 @@
             margin: 5px 0;
             padding: 8px 15px;
             font-size: 16px;
-            flex-shrink: 0; /* لمنع الزر من الانكماش */
+            flex-shrink: 0; 
         }
         .import-section button:hover { background-color: #e0a800; }
         /* ---------------------------------- */
-
 
         /* تنسيقات المربعات الإحصائية */
         .stats-section {
@@ -119,26 +118,7 @@
             color: #dc3545;
         }
         
-        /* تنسيقات النموذج والسجلات */
-        .form-section, .records-section { padding: 15px; box-sizing: border-box; width: 100%; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input[type="text"], input[type="number"] { width: 96%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
-        .auto-fill { background-color: #e9ecef; }
-        
-        /* تنسيق رأس السجلات والزر */
-        .records-header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            flex-wrap: wrap; 
-        }
-
-        /* تنسيق الجدول الافتراضي (للاجهزة الكبيرة) */
+        /* تنسيقات الجدول الافتراضي (للاجهزة الكبيرة) */
         #records-section { 
             margin-top: 20px; 
             padding-top: 20px; 
@@ -157,7 +137,7 @@
         }
         #records-table th, #records-table td { 
             border: 1px solid #ddd; 
-            padding: 5px 4px; 
+            padding: 8px 5px; /* زيادة التباعد قليلاً */
             text-align: center; 
             font-size: 12px; 
             white-space: normal; 
@@ -171,7 +151,7 @@
             font-size: 13px; 
         }
 
-        /* فئات التلوين المتناوب حسب اليوم (ألوان أغمق) */
+        /* فئات التلوين المتناوب حسب اليوم */
         .day-group-a {
             background-color: #d8f1e0; 
         }
@@ -209,11 +189,11 @@
             opacity: 0.8;
         }
         .delete-btn {
-            background-color: #dc3545; /* أحمر للحذف */
+            background-color: #dc3545; 
         }
         
         /* ================================================= */
-        /* 🛑 الاستجابة للهواتف الذكية (عرض 600 بكسل وأقل) */
+        /* 🛑 الاستجابة للهواتف الذكية (عرض 600 بكسل وأقل) - عرض البطاقات */
         /* ================================================= */
         @media only screen and (max-width: 600px) {
             body { 
@@ -224,43 +204,32 @@
                 border-right: none;
                 box-shadow: none;
             }
-            h1 {
-                font-size: 24px;
-            }
             
             /* تصغير خط الإحصائيات وتحسين العرض */
             .stat-box {
-                min-width: 100px; /* 🛠️ تصغير العرض الأدنى */
+                min-width: 100px; 
                 padding: 8px;
                 margin: 5px;
             }
             .stat-label {
-                font-size: 12px; /* تصغير الخط للتسمية */
+                font-size: 12px; 
             }
             .stat-value {
-                font-size: 18px; /* تصغير الخط للقيمة */
+                font-size: 18px; 
             }
 
-            /* تعديل أزرار التحكم في الجدول لتكون فوق بعضها */
+            /* تعديل أزرار التحكم في الجدول لتكون عمودية */
             .records-controls {
                 flex-direction: column;
                 gap: 5px;
                 width: 100%;
             }
-            .records-controls button {
-                margin: 0;
-            }
             
-            /* التأكد من أن حقول الإدخال تملأ العرض بالكامل */
-            input[type="text"], input[type="number"] { 
-                width: 98%; 
-            }
-            
-            /* 🛠️ تعديل طريقة عرض قسم الاستيراد في الجوال ليكون ديناميكياً وعمودياً */
+            /* تعديل طريقة عرض قسم الاستيراد في الجوال ليكون عمودياً */
             .import-section {
                 flex-direction: column;
                 align-items: stretch;
-                padding: 8px; /* تصغير الهامش الداخلي */
+                padding: 8px; 
             }
             .import-section input[type="file"], .import-section button {
                  width: 100%;
@@ -268,10 +237,73 @@
             }
             .import-section button {
                  font-size: 14px;
-                 padding: 6px 10px; /* تصغير الزر */
+                 padding: 6px 10px; 
             }
-            .import-section input[type="file"] {
+            
+            /* ------------------------------------------- */
+            /* 🟢 تحويل الجدول إلى عرض البطاقات (Card View) */
+            /* ------------------------------------------- */
+            
+            #records-table {
+                border: none;
+                min-width: 100%;
+            }
+            #records-table-wrapper {
+                overflow-x: hidden; /* إيقاف التمرير الأفقي */
+            }
+            #records-table thead {
+                display: none; /* إخفاء رأس الجدول الأصلي */
+            }
+            
+            /* تحويل الصف (<tr>) إلى بطاقة عمودية */
+            #records-table tr {
+                display: block;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                padding: 10px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            .day-group-a, .day-group-b {
+                background-color: #ffffff; /* لجعل البطاقة بيضاء بالكامل */
+                border-left: 5px solid #28a745; /* شريط جانبي للتلوين */
+            }
+            .day-group-b {
+                border-left-color: #007bff; /* تغيير لون الشريط للمجموعة الثانية */
+            }
+            
+            /* تحويل الخلية (<td>) إلى سطر داخل البطاقة */
+            #records-table td {
+                display: flex;
+                justify-content: space-between; /* توزيع العنوان والقيمة */
+                align-items: center;
+                border: none;
+                border-bottom: 1px solid #eee;
+                text-align: right;
+                padding: 5px 0;
                 font-size: 14px;
+            }
+            #records-table td:last-child {
+                border-bottom: none; 
+                justify-content: flex-end; /* لترك زر الإجراءات على اليسار */
+                padding-top: 10px;
+            }
+            
+            /* إضافة العنوان (رأس العمود) باستخدام data-label */
+            #records-table td::before {
+                content: attr(data-label); /* عرض قيمة السمة */
+                font-weight: bold;
+                color: #555;
+                min-width: 80px;
+                text-align: right;
+            }
+            
+            /* تخصيص مظهر بعض الخلايا داخل البطاقة */
+            .high-sugar, .normal-sugar, .medication-cell {
+                font-weight: bold;
+            }
+            .action-btn {
+                margin: 0;
             }
 
         }
@@ -290,17 +322,44 @@
                 border-right: none;
                 max-width: 100%;
             }
-            /* إخفاء النموذج، قسم الاستيراد، وأزرار التحكم بالجدول */
+            /* إخفاء العناصر غير الضرورية */
             .form-section, .import-section, .records-controls, h1, button {
                 display: none;
             }
             .records-header h2 {
                 display: none; 
             }
-            /* تمديد الجدول لتغطية عرض الصفحة المطبوعة */
+            
+            /* تمديد الجدول وضمان عرض الحدود */
             #records-table {
                 width: 100%; 
-                min-width: 100%; /* ضمان التمدد */
+                min-width: 100%; 
+                border-collapse: collapse;
+            }
+            
+            /* إظهار رأس الجدول في الطباعة */
+            #records-table thead {
+                 display: table-header-group;
+            }
+            
+            /* إعادة عرض الصفوف والخلايا كجدول عادي للطباعة */
+            #records-table tr {
+                display: table-row !important;
+                border: none !important;
+                margin-bottom: 0 !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+            #records-table td {
+                display: table-cell !important;
+                border: 1px solid #999;
+                padding: 5px 4px !important;
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            /* إزالة الـ data-label في وضع الطباعة */
+            #records-table td::before {
+                content: none !important;
             }
             
             /* إظهار الإحصائيات ورأس التقرير */
@@ -320,31 +379,17 @@
                 color: #333;
             }
             
-            /* الحفاظ على ألوان الصفوف والخلفيات (عن طريق إزالة !important) */
+            /* الحفاظ على ألوان الصفوف والخلفيات */
             #records-table th { 
-                background-color: #e0e0e0; /* لون خفيف لرأس الجدول */
+                background-color: #e0e0e0; 
                 color: #333;
                 font-size: 11pt;
             }
-            
-            /* الحفاظ على حدود الجدول وألوان الخطوط الشرطية */
             #records-table th, #records-table td {
-                border: 1px solid #999; /* حدود أغمق قليلاً للطباعة */
-                padding: 5px 4px;
+                border: 1px solid #999; 
                 font-size: 10pt;
                 white-space: normal; 
-                color: #000; /* ضمان أن النص أسود افتراضياً */
-            }
-            
-            /* ضمان بقاء الألوان الشرطية (الأحمر والأزرق) */
-            .high-sugar {
-                color: #dc3545; /* الأحمر للمرتفع */
-            }
-            .normal-sugar {
-                color: #218838; /* الأخضر للعادي */
-            }
-            .medication-cell {
-                color: #007bff; /* الأزرق للدواء */
+                color: #000; 
             }
             
             /* إخفاء عمود الإجراءات في الطباعة */
@@ -460,6 +505,12 @@
     const READINGS_COUNT_ELEM = document.getElementById('readings-count');
     const STORAGE_KEY = 'bloodSugarRecords';
     const EXCEL_INPUT = document.getElementById('excel-file-input');
+    
+    // تعريف رؤوس الأعمدة لاستخدامها كـ data-label في عرض البطاقات
+    const TABLE_HEADERS = [
+        'اليوم/التاريخ', 'الوقت (ص/م)', 'السكر (mg/dl)', 
+        'الضغط', 'الوزن (كجم)', 'الدواء', 'إجراءات'
+    ];
 
     // ----------------------------------------------------
     // الدوال المساعدة للتحويل والتوحيد
@@ -480,12 +531,10 @@
              return cleanedTime;
         }
         
-        // إذا كان يحتوي على ص/م، فهذا يعني أنه نص منسق بالفعل، نرجعه مباشرة.
         if (cleanedTime.includes('ص') || cleanedTime.includes('م')) {
             return cleanedTime;
         }
 
-        // محاولة التحويل من 24 ساعة (من تنسيق Timestamp أو إدخال يدوي)
         let parts = cleanedTime.split(':');
         if (parts.length < 2) return cleanedTime; 
 
@@ -504,17 +553,13 @@
     function formatDateForDisplay(dateStr) {
         const cleanedDate = cleanValue(dateStr);
         
-        // إذا كان التاريخ بالفعل في صيغة عربية كاملة، نرجعه
         if (cleanedDate.includes('،')) {
             return cleanedDate;
         }
         
-        // إذا كان التاريخ في صيغة YYYY-MM-DD (من timestamp) أو أي صيغة نصية أخرى
         if (cleanedDate.match(/^\d{4}-\d{2}-\d{2}/) || cleanedDate.includes(',') || cleanedDate.split(' ').length > 2) {
-            // نستخدم Date constructor لمحاولة قراءة التاريخ
             const date = new Date(cleanedDate);
             
-            // إضافة ساعة لتجنب مشكلة المنطقة الزمنية (Timezone) التي قد تجعله يوماً سابقاً
             if (date.getHours() !== 12) {
                  date.setHours(12);
             }
@@ -523,7 +568,6 @@
                  return cleanedDate; 
             }
             
-            // نستخدم التنسيق العربي للعرض في الجدول
             const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             return date.toLocaleDateString('ar-EG', dateOptions).replace(/,/g, '،');
         }
@@ -534,7 +578,6 @@
 
     // دالة لإنشاء (Timestamp) قابل للفرز من نص التاريخ والوقت
     function createSortableTimestamp(dateStr, timeStr) {
-        // إذا كان التاريخ بالفعل في صيغة (YYYY-MM-DD) متبوعًا بالوقت
         if (dateStr.match(/^\d{4}-\d{2}-\d{2}/) && timeStr.match(/^\d{2}:\d{2}:\d{2}/)) {
              return `${dateStr} ${timeStr}`;
         }
@@ -542,27 +585,21 @@
         let datePart = '';
         let timePart = '00:00:00';
         
-        // 1. معالجة التواريخ النصية (سواء كانت عربية أو إنجليزية أو أي صيغة نصية)
-        // محاولة بناء كائن التاريخ مباشرة من النص المدخل
         const tempDate = new Date(dateStr);
         if (!isNaN(tempDate.getTime())) {
-             // إضافة ساعة لتجنب مشكلة المنطقة الزمنية (Timezone)
              const fixedDate = new Date(tempDate.getTime() + (12 * 60 * 60 * 1000)); 
              datePart = fixedDate.toISOString().split('T')[0];
         } else if (!isNaN(parseInt(dateStr)) && parseInt(dateStr) > 40000) {
-             // 2. معالجة التواريخ الرقمية من Excel 
              const utc_days  = dateStr - 25569;
              const date = new Date(utc_days * 86400 * 1000);
              datePart = date.toISOString().split('T')[0];
         }
         
-        // 3. معالجة الوقت
         if (timeStr.includes(':')) {
              const timeParts = timeStr.split(':');
              timePart = `${String(timeParts[0] || '00').padStart(2, '0')}:${String(timeParts[1] || '00').padStart(2, '0')}:${String(timeParts[2] || '00').padStart(2, '0')}`;
         }
         
-        // إذا لم ننجح في استخراج التاريخ بأي طريقة، نستخدم تاريخ افتراضي قديم
         if (!datePart) {
              return '1970-01-01 00:00:00';
         }
@@ -579,7 +616,6 @@
         const now = new Date();
         const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         
-        // تغيير اللغة إلى 'en-US' لغرض عرض التاريخ في حقل الإدخال
         document.getElementById('current-date').value = now.toLocaleDateString('en-US', dateOptions);
 
         const hours = String(now.getHours()).padStart(2, '0');
@@ -655,7 +691,6 @@
             pressure: cleanValue(record.pressure),
             weight: cleanValue(record.weight),
             medication: cleanValue(record.medication),
-            // إضافة حقل التوحيد (Timestamp)
             timestamp: createSortableTimestamp(cleanValue(record.date), cleanValue(record.time))
         });
         localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
@@ -672,7 +707,6 @@
             pressure: cleanValue(record.pressure),
             weight: cleanValue(record.weight),
             medication: cleanValue(record.medication),
-            // إضافة حقل التوحيد (Timestamp)
             timestamp: createSortableTimestamp(cleanValue(record.date), cleanValue(record.time))
         }));
         
@@ -708,7 +742,7 @@
     }
     
     // ----------------------------------------------------
-    // 4. عرض السجلات
+    // 4. عرض السجلات (مع إضافة data-label)
     // ----------------------------------------------------
 
     function renderRecords() {
@@ -722,7 +756,6 @@
             NO_RECORDS_MSG.style.display = 'none';
         }
         
-        // الفرز باستخدام الدالة الجديدة لضمان الترتيب الصحيح (الأحدث في الأعلى)
         const sortedRecords = sortRecords(records);
 
         let previousDate = null;
@@ -730,15 +763,11 @@
         
         sortedRecords.forEach((record, arrayIndex) => {
             
-            // تحديد المؤشر الأصلي للسجل قبل الفرز
             const actualIndex = records.findIndex(r => r.timestamp === record.timestamp && r.date === record.date && r.time === record.time);
             
             const row = recordsBody.insertRow();
             
-            // الحصول على التاريخ المنسق للعرض (يجب أن يكون بالصيغة العربية المطلوبة)
             const displayDate = formatDateForDisplay(record.date);
-            
-            // منطق تلوين الصفوف حسب اليوم (باستخدام التاريخ المنسق للعرض)
             const currentDate = cleanValue(displayDate);
             
             if (currentDate !== previousDate && previousDate !== null) {
@@ -747,42 +776,60 @@
             row.classList.add(dayGroupClass);
             previousDate = currentDate;
 
-
             const displayTime = formatTo12Hour(record.time); 
-
-            row.insertCell().textContent = displayDate; // التاريخ المنسق
-            row.insertCell().textContent = cleanValue(displayTime); // الوقت
-            
-            // خلية السكر (مع التنسيق الشرطي)
             const sugarValue = cleanValue(record.sugar);
-            const sugarCell = row.insertCell();
-            sugarCell.textContent = sugarValue;
+            const pressureValue = cleanValue(record.pressure);
+            const weightValue = cleanValue(record.weight);
+            const medicationValue = cleanValue(record.medication);
+            
+            // 🛑 إضافة الخلايا مع data-label
+            
+            // 1. اليوم/التاريخ
+            let cell = row.insertCell();
+            cell.textContent = displayDate; 
+            cell.setAttribute('data-label', TABLE_HEADERS[0]);
+            
+            // 2. الوقت
+            cell = row.insertCell();
+            cell.textContent = cleanValue(displayTime); 
+            cell.setAttribute('data-label', TABLE_HEADERS[1]);
 
+            // 3. السكر
+            cell = row.insertCell();
+            cell.textContent = sugarValue;
+            cell.setAttribute('data-label', TABLE_HEADERS[2]);
             if (sugarValue !== '-') {
                 const numericSugar = parseFloat(sugarValue);
                 if (numericSugar > 140) {
-                    sugarCell.classList.add('high-sugar');
+                    cell.classList.add('high-sugar');
                 } else if (numericSugar >= 70) {
-                    sugarCell.classList.add('normal-sugar');
+                    cell.classList.add('normal-sugar');
                 }
             }
             
-            row.insertCell().textContent = cleanValue(record.pressure);
-            row.insertCell().textContent = cleanValue(record.weight);
+            // 4. الضغط
+            cell = row.insertCell();
+            cell.textContent = pressureValue;
+            cell.setAttribute('data-label', TABLE_HEADERS[3]);
+
+            // 5. الوزن
+            cell = row.insertCell();
+            cell.textContent = weightValue;
+            cell.setAttribute('data-label', TABLE_HEADERS[4]);
             
-            // خلية الدواء (مع التنسيق)
-            const medicationCell = row.insertCell();
-            medicationCell.textContent = cleanValue(record.medication);
-            
-            if (cleanValue(record.medication) !== '-') {
-                 medicationCell.classList.add('medication-cell');
+            // 6. الدواء
+            cell = row.insertCell();
+            cell.textContent = medicationValue;
+            cell.setAttribute('data-label', TABLE_HEADERS[5]);
+            if (medicationValue !== '-') {
+                 cell.classList.add('medication-cell');
             }
             
-            // خلية الإجراءات (الحذف فقط)
-            const actionsCell = row.insertCell();
-            actionsCell.innerHTML = `
-                <button class="action-btn delete-btn" onclick="deleteRecord(${actualIndex})">حذف</button>
-            `;
+            // 7. الإجراءات
+            cell = row.insertCell();
+            cell.innerHTML = `<button class="action-btn delete-btn" onclick="deleteRecord(${actualIndex})">حذف</button>`;
+            cell.setAttribute('data-label', TABLE_HEADERS[6]); 
+            
         });
     }
 
@@ -801,7 +848,6 @@
         reader.onload = function(e) {
             const data = new Uint8Array(e.target.result);
             
-            // نستخدم raw: false, cellText: true للحصول على التواريخ كنصوص منسقة
             const workbook = XLSX.read(data, { type: 'array', cellText: true, cellDates: false });
             
             const sheetName = workbook.SheetNames[0];
@@ -855,8 +901,8 @@
         e.preventDefault();
         
         const newRecord = {
-            date: document.getElementById('current-date').value, // تاريخ بالصيغة الإنجليزية
-            time: document.getElementById('current-time').value, // 24 ساعة
+            date: document.getElementById('current-date').value, 
+            time: document.getElementById('current-time').value, 
             sugar: document.getElementById('blood-sugar').value,
             pressure: document.getElementById('blood-pressure').value,
             weight: document.getElementById('weight').value,
