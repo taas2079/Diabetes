@@ -53,8 +53,8 @@
             background-color: #e6f7ff; 
             border: 1px solid #b3e5ff; 
             border-radius: 8px; 
-            padding: 10px; 
-            margin-bottom: 10px; 
+            padding: 20px; 
+            margin-bottom: 20px; 
             text-align: center;
             display: flex;
             justify-content: space-around;
@@ -64,14 +64,14 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 8px;
+            padding: 15px;
             margin: 10px;
-            min-width: 140px;
+            min-width: 180px;
             text-align: center;
             border-bottom: 4px solid #007bff;
         }
         .stat-label {
-            font-size: 16px;
+            font-size: 14px;
             color: #555;
             display: block;
             margin-bottom: 5px;
@@ -216,7 +216,7 @@
 <body>
 
 <div class="container">
-    <h1>🩸  متابعة السكر اليومي</h1>
+    <h1>📝 سجل متابعة السكر اليومي</h1>
 
     <div class="stats-section">
         <div class="stat-box">
@@ -224,19 +224,19 @@
             <span id="avg-sugar" class="stat-value">-- mg/dl</span>
         </div>
         <div class="stat-box" style="border-bottom-color: #ffc107;">
-            <span class="stat-label">  التراكمي (HbA1c)</span>
+            <span class="stat-label">مؤشر السكر التراكمي المقدر (HbA1c)</span>
             <span id="estimated-hba1c" class="stat-value hba1c-value">-- %</span>
         </div>
         <div class="stat-box" style="border-bottom-color: #28a745;">
-            <span class="stat-label"> القراءات المسجلة</span>
+            <span class="stat-label">عدد القراءات المسجلة</span>
             <span id="readings-count" class="stat-value">0</span>
         </div>
     </div>
 
     <div class="import-section">
-        <h2>📂استيراد البيانات </h2>
+        <h2>📂 استيراد البيانات من ملف Excel/CSV</h2>
         <input type="file" id="excel-file-input" accept=".xlsx, .xls, .csv">
-        <button onclick="handleExcelImport()">استيراد البيانات</button>
+        <button onclick="handleExcelImport()">استيراد وتسجيل البيانات</button>
     </div>
     
     <div class="form-section">
@@ -249,41 +249,41 @@
                     <input type="text" id="current-date" name="currentDate" class="auto-fill" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="current-time">الوقت </label>
+                    <label for="current-time">الوقت (HH:MM:SS)</label>
                     <input type="text" id="current-time" name="currentTime" class="auto-fill" readonly>
                 </div>
             </div>
 
-            <h2>القياسات</h2>
+            <h2>قراءات القياس</h2>
             <div class="form-grid">
                 <div class="form-group">
-                    <label for="blood-sugar">السكر في الدم (**mg/dl**)</label>
+                    <label for="blood-sugar">قياس نسبة السكر في الدم (**mg/dl**)</label>
                     <input type="number" id="blood-sugar" name="bloodSugar" required>
                 </div>
                 <div class="form-group">
-                    <label for="blood-pressure">ضغط الدم</label>
+                    <label for="blood-pressure">ضغط الدم (انقباضي/انبساطي)</label>
                     <input type="text" id="blood-pressure" name="bloodPressure">
-                </di
+                </div>
                 <div class="form-group">
                     <label for="weight">وزن الجسم (كجم)</label>
                     <input type="number" id="weight" name="weight" step="0.1">
                 </div>
                 <div class="form-group">
-                    <label for="medication">دواء السكر</label>
+                    <label for="medication">الدواء</label>
                     <input type="text" id="medication" name="medication" value="فورميت 750 ملجم (حبة واحدة)">
                 </div>
             </div>
 
-            <button type="submit">✅ حفظ السجل  </button>
+            <button type="submit">✅ تسجيل قراءة اليوم</button>
         </form>
     </div>
 
     <div id="records-section" class="records-section">
         <div class="records-header">
-            <h2>📜 سجلات القراءات السابقة</h2>
+            <h2>📜 سجلات البيانات المحفوظة</h2>
             <div class="records-controls">
                 <button id="print-records-btn" onclick="printRecords()">🖨️ طباعة السجلات</button>
-                <button id="clear-records-btn" onclick="clearAllRecords()">🗑️ مسح السجلات</button>
+                <button id="clear-records-btn" onclick="clearAllRecords()">🗑️ مسح جميع السجلات</button>
             </div>
         </div>
         <div id="records-table-wrapper">
@@ -291,12 +291,12 @@
                 <thead>
                     <tr>
                         <th>اليوم/التاريخ</th>
-                        <th>الوقت</th>
+                        <th>الوقت (ص/م)</th>
                         <th>السكر (mg/dl)</th>
                         <th>الضغط</th>
-                        <th>الوزن</th>
-                        <th>دواء السكر</th>
-                        <th>الحذف</th> 
+                        <th>الوزن (كجم)</th>
+                        <th>الدواء</th>
+                        <th>إجراءات</th> 
                     </tr>
                 </thead>
                 <tbody id="records-body">
@@ -309,7 +309,7 @@
 
 <script>
     // ===============================================
-    //               كود JavaScript (لا تغيير في وظائفه)
+    //               كود JavaScript 
     // ===============================================
 
     const form = document.getElementById('blood-sugar-form');
@@ -439,10 +439,12 @@
     
     function getRecords() {
         const records = localStorage.getItem(STORAGE_KEY);
+        // نُعيد القائمة غير المفروزة المخزنة
         return records ? JSON.parse(records) : [];
     }
     
     function sortRecords(records) {
+        // نُنشئ قائمة مفروزة بناءً على الوقت (الأحدث أولاً)
         return records.sort((a, b) => {
             if (a.timestamp > b.timestamp) return -1;
             if (a.timestamp < b.timestamp) return 1;
@@ -501,6 +503,7 @@
     window.deleteRecord = function(index) {
         if (confirm(`هل أنت متأكد من حذف هذا السجل؟`)) {
             const records = getRecords();
+            // نستخدم المؤشر الممرر مباشرة لحذف السجل من القائمة الأصلية غير المفروزة
             records.splice(index, 1); 
             localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
             renderRecords();
@@ -509,24 +512,30 @@
     }
     
     function renderRecords() {
-        let records = getRecords(); 
+        // 1. جلب السجلات الأصلية وإضافة المؤشر الأصلي لكل سجل قبل الفرز
+        let recordsWithIndex = getRecords().map((record, index) => ({
+            ...record,
+            originalIndex: index 
+        })); 
         recordsBody.innerHTML = '';
 
-        if (records.length === 0) {
+        if (recordsWithIndex.length === 0) {
             NO_RECORDS_MSG.style.display = 'block';
             return;
         } else {
             NO_RECORDS_MSG.style.display = 'none';
         }
         
-        const sortedRecords = sortRecords(records);
+        // 2. فرز القائمة التي تحمل الآن المؤشر الأصلي
+        const sortedRecords = sortRecords(recordsWithIndex);
 
         let previousDate = null;
         let dayGroupClass = 'day-group-a'; 
         
         sortedRecords.forEach((record, arrayIndex) => {
             
-            const actualIndex = records.findIndex(r => r.timestamp === record.timestamp && r.date === record.date && r.time === record.time);
+            // 🛑 المؤشر الأصلي المستخدم للحذف (يتم جلبه من السجل نفسه)
+            const actualIndex = record.originalIndex; 
             
             const row = recordsBody.insertRow();
             
@@ -576,7 +585,7 @@
                  cell.classList.add('medication-cell');
             }
             
-            // 7. الإجراءات
+            // 7. الإجراءات (باستخدام المؤشر الأصلي للحذف الصحيح)
             cell = row.insertCell();
             cell.innerHTML = `<button class="action-btn delete-btn" onclick="deleteRecord(${actualIndex})">حذف</button>`;
             
